@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample speed and SEO audit report</title>
+  <meta name="description" content="A sample website speed and SEO audit: findings ordered by impact, plain-language explanations, concrete fixes and measured results after the fixes.">
+  <link rel="canonical" href="https://agent-carl.github.io/page-speed-demo/report/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../case.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap bar">
+      <a class="name" href="/">Ivan</a>
+      <a class="back" href="../">Back to the case study</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro">
+      <span class="tag">Sample report, demo website</span>
+      <h1>Speed and SEO audit: Høstlys Coffee Roasters</h1>
+      <p class="lead">This is the kind of report you get with my audit service. It was made for the "before" version of a fictional website, and the fixes it recommends were then applied to produce the "after" version.</p>
+      <div class="meta">
+        <div><span>Page audited</span><a href="../before/">page-speed-demo/before/</a></div>
+        <div><span>Measured</span>11 October 2026</div>
+        <div><span>Tool</span>Google PageSpeed Insights, mobile</div>
+        <div><span>Prepared by</span>Ivan</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Summary</h2>
+      <p>On a typical phone the page needs <strong>26.6 s</strong> to show its main image, and the visitor sees a blank screen for the first <strong>3.3 s</strong>. Almost all of the delay comes from two things: photos that are far larger than they need to be, and files that the browser must download before it can show anything.</p>
+      <p>Below are six fixes, ordered by impact. The first two give most of the gain. None of them need a redesign or a new platform, and the page will look the same to visitors.</p>
+      <div class="table-wrap">
+        <table class="results">
+          <thead><tr><th scope="col">Mobile result</th><th scope="col">Now</th><th scope="col">After the fixes</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Performance score (0–100)</th><td class="bad">66</td><td class="good">97</td></tr>
+            <tr><th scope="row">Main content visible (LCP)</th><td class="bad">26.6 s</td><td class="good">2.4 s</td></tr>
+            <tr><th scope="row">First content visible (FCP)</th><td class="bad">3.3 s</td><td class="good">0.8 s</td></tr>
+            <tr><th scope="row">Page weight</th><td class="bad">4.8 MB</td><td class="good">34 KB</td></tr>
+            <tr><th scope="row">Accessibility score</th><td>85</td><td class="good">100</td></tr>
+            <tr><th scope="row">SEO score</th><td>91</td><td class="good">100</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted">Google considers LCP under 2.5 s good and over 4 s poor. Lab results vary a little between runs.</p>
+    </section>
+
+    <section>
+      <h2>Findings and fixes</h2>
+
+      <article class="finding">
+        <header><h3>1. Photos are 10 to 20 times larger than needed</h3><span class="prio prio-high">High impact</span></header>
+        <dl>
+          <dt>Found</dt><dd>Four JPEG photos, 4000 and 2400 px wide, 4.6 MB together. On a phone they are shown about 350 to 400 px wide.</dd>
+          <dt>Why it matters</dt><dd>The main image alone is 2 MB, which is why it takes 26.6 s to appear on a mobile connection.</dd>
+          <dt>Fix</dt><dd>Resize to the displayed size (and double for sharp screens), serve AVIF with a WebP fallback, let the browser choose the size with <code>srcset</code>, and lazy-load images below the first screen.</dd>
+          <dt>Effort</dt><dd>1–2 hours</dd>
+        </dl>
+      </article>
+
+      <article class="finding">
+        <header><h3>2. Six files block the first paint</h3><span class="prio prio-high">High impact</span></header>
+        <dl>
+          <dt>Found</dt><dd>Bootstrap CSS and JavaScript, Font Awesome, jQuery and three font families load in the <code>&lt;head&gt;</code> before anything is shown. PageSpeed estimates 2.8 s of savings. The page uses almost none of this code.</dd>
+          <dt>Why it matters</dt><dd>The visitor looks at a blank screen while these files download.</dd>
+          <dt>Fix</dt><dd>Remove the unused libraries, inline the page's own CSS (about 2.5 KB), replace the icon font with three inline SVG icons, and replace the jQuery smooth scrolling with one line of CSS.</dd>
+          <dt>Effort</dt><dd>2–3 hours</dd>
+        </dl>
+      </article>
+
+      <article class="finding">
+        <header><h3>3. Fonts: three families, fifteen weights</h3><span class="prio prio-med">Medium impact</span></header>
+        <dl>
+          <dt>Found</dt><dd>Poppins in nine weights, Playfair Display and Roboto are requested, but the page uses one family in two weights. Text stays invisible until the fonts arrive.</dd>
+          <dt>Fix</dt><dd>Load only Poppins 400 and 600 with <code>font-display: swap</code>, without blocking rendering, so the text is visible immediately.</dd>
+          <dt>Effort</dt><dd>30 minutes</dd>
+        </dl>
+      </article>
+
+      <article class="finding">
+        <header><h3>4. Content jumps while loading</h3><span class="prio prio-med">Medium impact</span></header>
+        <dl>
+          <dt>Found</dt><dd>Images have no width and height, and a promo bar is inserted by a script one second after load, pushing the whole page down.</dd>
+          <dt>Why it matters</dt><dd>Visitors lose their place or tap the wrong thing. Layout shift (CLS) is one of Google's Core Web Vitals.</dd>
+          <dt>Fix</dt><dd>Set image dimensions and put the promo bar in the HTML from the start.</dd>
+          <dt>Effort</dt><dd>30 minutes</dd>
+        </dl>
+      </article>
+
+      <article class="finding">
+        <header><h3>5. Accessibility and SEO basics</h3><span class="prio prio-low">Low effort</span></header>
+        <dl>
+          <dt>Found</dt><dd>White text on the orange promo bar does not have enough contrast, a heading level is skipped, there is no main landmark, and the page has no meta description.</dd>
+          <dt>Fix</dt><dd>Darken the promo colour slightly, fix the heading order, wrap the content in <code>&lt;main&gt;</code>, and write a meta description for search results.</dd>
+          <dt>Effort</dt><dd>30 minutes</dd>
+        </dl>
+      </article>
+
+      <article class="finding">
+        <header><h3>6. Short cache lifetime</h3><span class="prio prio-low">Depends on hosting</span></header>
+        <dl>
+          <dt>Found</dt><dd>Static files are cached for only 10 minutes, so returning visitors download them again.</dd>
+          <dt>Fix</dt><dd>On most hosts: cache images, CSS and fonts for a year and change file names when they change. On this demo host (GitHub Pages) the cache time cannot be configured, so this item stays open.</dd>
+          <dt>Effort</dt><dd>15–30 minutes, if the host allows it</dd>
+        </dl>
+      </article>
+    </section>
+
+    <section>
+      <h2>What this report does not cover</h2>
+      <p>Real-visitor speed data from Google (the Chrome User Experience Report) is only available for sites with enough traffic, so this audit uses lab measurements. After the fixes go live, I re-run the same measurements to confirm the result.</p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>Sample report by <a href="/">Ivan</a> for a fictional business. Full PageSpeed reports: <a href="https://pagespeed.web.dev/analysis/https-agent-carl-github-io-page-speed-demo-before/lwz5npnrrp?form_factor=mobile">before</a>, <a href="https://pagespeed.web.dev/analysis/https-agent-carl-github-io-page-speed-demo-after/djt2lafuyw?form_factor=mobile">after</a>.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,95 @@
+:root {
+  --bg: #f7f7f4;
+  --surface: #ffffff;
+  --text: #17181a;
+  --muted: #5a5e66;
+  --line: #e3e3dd;
+  --accent: #2747a8;
+  --accent-soft: #e8edfb;
+  --good: #1d7a46;
+  --bad: #b3261e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121314;
+    --surface: #1a1c1e;
+    --text: #ececea;
+    --muted: #a3a7ad;
+    --line: #2b2e31;
+    --accent: #8fa8f5;
+    --accent-soft: #1d2335;
+    --good: #5fcf8f;
+    --bad: #f28b82;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 1.0625rem/1.65 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+a { color: inherit; }
+h1, h2, h3 { line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 0.5em; }
+h1 { font-size: clamp(2rem, 4.6vw, 3rem); }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.1rem; }
+p { margin: 0 0 1em; }
+code { font-size: 0.92em; background: var(--accent-soft); padding: 1px 5px; border-radius: 5px; }
+
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+header.site { border-bottom: 1px solid var(--line); }
+.bar { display: flex; align-items: center; min-height: 60px; }
+.name { font-weight: 750; text-decoration: none; font-size: 1.1rem; }
+.back { margin-left: auto; color: var(--muted); text-decoration: none; }
+
+section { padding: 40px 0 8px; }
+.intro { padding-top: 56px; }
+.tag { display: inline-block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); margin-bottom: 14px; }
+.lead { font-size: 1.18rem; color: var(--muted); }
+.muted { color: var(--muted); font-size: 0.95rem; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid var(--text); font-weight: 650; text-decoration: none; }
+.btn-solid { background: var(--text); color: var(--bg); }
+
+.table-wrap { overflow-x: auto; }
+.results { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+.results th, .results td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+.results thead th { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+.results tbody th { font-weight: 500; }
+.results td { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.good { color: var(--good); }
+.bad { color: var(--bad); }
+
+.changes { padding-left: 1.2em; }
+.changes li { margin-bottom: 18px; }
+.changes li::marker { font-weight: 700; color: var(--accent); }
+.changes p { color: var(--muted); margin: 0; }
+
+/* Report */
+.meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0 0; }
+.meta div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; }
+.meta span { display: block; font-size: 0.82rem; color: var(--muted); }
+.finding { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; margin-bottom: 14px; }
+.finding header { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline; margin-bottom: 8px; }
+.finding h3 { margin: 0; }
+.prio { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 9px; border-radius: 999px; }
+.prio-high { background: color-mix(in srgb, var(--bad) 15%, transparent); color: var(--bad); }
+.prio-med { background: var(--accent-soft); color: var(--accent); }
+.prio-low { background: color-mix(in srgb, var(--muted) 15%, transparent); color: var(--muted); }
+.finding dl { display: grid; grid-template-columns: 7.5em 1fr; gap: 6px 14px; margin: 0; }
+.finding dt { color: var(--muted); font-size: 0.92rem; }
+.finding dd { margin: 0; }
+
+footer { padding: 40px 20px 56px; color: var(--muted); font-size: 0.92rem; }
+
+@media print {
+  header.site, .actions { display: none; }
+  body { background: #fff; color: #000; }
+  .finding, .results, .meta div { break-inside: avoid; }
+}

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page speed case study: the same page before and after optimization</title>
+  <meta name="description" content="A landing page with typical speed problems, and the same page optimized: mobile PageSpeed 66 to 97, page weight 4.8 MB to 34 KB. Measured with Google PageSpeed Insights.">
+  <link rel="canonical" href="https://agent-carl.github.io/page-speed-demo/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="case.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap bar">
+      <a class="name" href="/">Ivan</a>
+      <a class="back" href="/#work">All work</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro">
+      <span class="tag">Demo, speed optimization</span>
+      <h1>The same page, before and after</h1>
+      <p class="lead">Høstlys is a fictional coffee roaster. Its landing page is built the way many small business sites are, with full-size photos, a CSS framework, an icon font and render-blocking fonts and scripts. The optimized version looks the same to a visitor, but loads much faster on a phone.</p>
+      <div class="actions">
+        <a class="btn btn-solid" href="before/">Open "before"</a>
+        <a class="btn btn-solid" href="after/">Open "after"</a>
+        <a class="btn" href="report/">Sample audit report</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Results</h2>
+      <p class="muted">Google PageSpeed Insights, mobile (emulated mid-range phone on a slow 4G connection), measured 11 October 2026. Lab results vary a little between runs.</p>
+      <div class="table-wrap">
+        <table class="results">
+          <thead>
+            <tr><th scope="col">Metric</th><th scope="col">Before</th><th scope="col">After</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Performance score</th><td class="bad">66</td><td class="good">97</td></tr>
+            <tr><th scope="row">Largest Contentful Paint</th><td class="bad">26.6 s</td><td class="good">2.4 s</td></tr>
+            <tr><th scope="row">First Contentful Paint</th><td class="bad">3.3 s</td><td class="good">0.8 s</td></tr>
+            <tr><th scope="row">Speed Index</th><td class="bad">4.6 s</td><td class="good">0.8 s</td></tr>
+            <tr><th scope="row">Cumulative Layout Shift</th><td>0.053</td><td>0.077</td></tr>
+            <tr><th scope="row">Page weight</th><td class="bad">4.8 MB</td><td class="good">34 KB</td></tr>
+            <tr><th scope="row">Render-blocking files</th><td class="bad">6</td><td class="good">0</td></tr>
+            <tr><th scope="row">Accessibility score</th><td>85</td><td class="good">100</td></tr>
+            <tr><th scope="row">SEO score</th><td>91</td><td class="good">100</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted">Full reports: <a href="https://pagespeed.web.dev/analysis/https-agent-carl-github-io-page-speed-demo-before/lwz5npnrrp?form_factor=mobile">before</a>, <a href="https://pagespeed.web.dev/analysis/https-agent-carl-github-io-page-speed-demo-after/djt2lafuyw?form_factor=mobile">after</a>.</p>
+    </section>
+
+    <section>
+      <h2>What was changed</h2>
+      <ol class="changes">
+        <li>
+          <h3>Images resized to the size they are shown at</h3>
+          <p>The photos were 4000 and 2400 pixels wide, straight from a camera, 4.6 MB in total. They are now resized for phones and screens (800 to 1600 px), served as AVIF with WebP as a fallback, and the browser picks the right size with <code>srcset</code>. The images below the first screen load only when the visitor scrolls to them.</p>
+        </li>
+        <li>
+          <h3>The main image is loaded first</h3>
+          <p>The hero image is the largest element on the first screen, so it is preloaded with high priority instead of waiting behind stylesheets and scripts.</p>
+        </li>
+        <li>
+          <h3>No render-blocking files</h3>
+          <p>The page loaded Bootstrap, Font Awesome, jQuery and a JavaScript bundle before showing anything, but used almost none of it. They are gone: the page needs about 2.5 KB of its own CSS, which is now inlined, and three small SVG icons replace a whole icon font.</p>
+        </li>
+        <li>
+          <h3>Fonts that do not hold the page hostage</h3>
+          <p>Three font families in fifteen weights became one family in two weights, loaded without blocking the first paint. The text appears right away in a system font and switches to the brand font a moment later.</p>
+        </li>
+        <li>
+          <h3>Less content jumping around</h3>
+          <p>Images have their dimensions set, and the promo bar is part of the page from the start instead of being pushed in by a script one second later. A small shift remains when the brand font replaces the system font. It stays within Google's "good" range (under 0.1), and could be removed completely by hosting the font on the site itself.</p>
+        </li>
+        <li>
+          <h3>Accessibility and SEO basics</h3>
+          <p>Fixed a colour contrast issue, a skipped heading level and a missing main landmark, and added a meta description.</p>
+        </li>
+      </ol>
+      <p class="muted">The pictures in this demo are drawn by a script, which is why the optimized files are so small. Real photos keep more detail, so the savings are usually smaller, but the same steps apply.</p>
+    </section>
+
+    <section>
+      <h2>Why it matters</h2>
+      <p>Most small business websites are visited on a phone, often on a mobile connection. A page that shows its main content after several seconds loses visitors before they read anything, and Google uses the same speed metrics (Core Web Vitals) as one of its ranking signals.</p>
+      <p>This kind of work does not need a redesign or a new platform. Most of the gain comes from a handful of changes to images, fonts and scripts.</p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>Demo by <a href="/">Ivan</a>. Høstlys Coffee Roasters is a fictional business. <a href="https://github.com/agent-carl/page-speed-demo">Source code</a></p>
+  </footer>
+</body>
+</html>
