@@ -1,0 +1,11 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+# Secrets never go into the repository
+.env
+.env.*
+*.key
+__pycache__/
+.venv/

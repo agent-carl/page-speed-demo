@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Høstlys Coffee Roasters</title>
+  <meta name="robots" content="noindex, follow">
+
+  <!-- Typical problems, kept on purpose for the demo:
+       render-blocking fonts (3 families, 15 weights, no font-display),
+       a full CSS framework and an icon font for 3 icons,
+       jQuery and a JS bundle loaded synchronously in <head>,
+       4.6 MB of full-size JPEGs without width/height,
+       a promo bar injected late that pushes the page down. -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500;700" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+  <div class="demo-note">
+    Demo, "before" version: a fictional coffee roaster with typical speed problems.
+    <a href="../">Back to the case study</a>
+  </div>
+
+  <header class="top">
+    <a class="logo" href="#">Høstlys</a>
+    <nav>
+      <a href="#coffee">Coffee</a>
+      <a href="#roastery">Roastery</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="button" href="#visit">Shop beans</a>
+  </header>
+
+  <section class="hero">
+    <img class="hero-img" src="img/hero.jpg" alt="Hills at sunset">
+    <div class="hero-text">
+      <h1>Small-batch coffee, roasted in Oslo.</h1>
+      <p>We roast twice a week and ship the same day, so the beans you get are never older than a few days.</p>
+      <a class="button" href="#coffee">See this week's coffee</a>
+    </div>
+  </section>
+
+  <section class="features" id="coffee">
+    <article class="feature">
+      <img class="feature-img" src="img/roastery.jpg" alt="The roastery">
+      <div class="feature-body">
+        <i class="icon fa-solid fa-mug-hot"></i>
+        <h3>Roasted fresh</h3>
+        <p>Every batch is roasted to order and packed within hours.</p>
+      </div>
+    </article>
+    <article class="feature" id="roastery">
+      <img class="feature-img" src="img/beans.jpg" alt="Coffee beans">
+      <div class="feature-body">
+        <i class="icon fa-solid fa-leaf"></i>
+        <h3>Traceable beans</h3>
+        <p>We buy directly from farms we know and pay well above market price.</p>
+      </div>
+    </article>
+    <article class="feature">
+      <img class="feature-img" src="img/cafe.jpg" alt="The café">
+      <div class="feature-body">
+        <i class="icon fa-solid fa-box"></i>
+        <h3>Free delivery in Oslo</h3>
+        <p>Orders over 400 kr are delivered by bike within one working day.</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="cta" id="visit">
+    <h2>Visit the roastery</h2>
+    <p>Open Tuesday to Saturday. Come for a tasting, stay for a cup.</p>
+    <a class="button" href="#">Plan your visit</a>
+  </section>
+
+  <footer>Høstlys Coffee Roasters is a fictional business. Demo by Ivan.</footer>
+
+  <script>
+    // A late "promo" widget, like many chat or discount plugins: it pushes the whole page down.
+    $(function () {
+      setTimeout(function () {
+        $("body").prepend('<div class="promo-bar">Free delivery in Oslo on orders over 400 kr</div>');
+      }, 1000);
+      $('a[href^="#"]').on("click", function (e) {
+        var target = $(this.getAttribute("href"));
+        if (target.length) {
+          e.preventDefault();
+          $("html, body").animate({ scrollTop: target.offset().top }, 400);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Høstlys Coffee Roasters</title>
+  <meta name="description" content="Small-batch coffee roasted in Oslo twice a week and shipped the same day. Demo project with a fictional business.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- One family, two weights, font-display: swap, loaded without blocking the first paint. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"></noscript>
+  <link rel="preload" as="image" type="image/avif" imagesrcset="img/hero-800.avif 800w, img/hero-1200.avif 1200w, img/hero-1600.avif 1600w" imagesizes="(max-width: 1120px) calc(100vw - 40px), 1080px" fetchpriority="high">
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    h1,h2,h3{font-weight:600;line-height:1.2}
+    body{margin:0;font-family:"Poppins",Arial,sans-serif;color:#1f1a17;background:#fbf8f4;line-height:1.6}
+    img{display:block;max-width:100%;height:auto}
+    .demo-note{background:#1f1a17;color:#fbf8f4;text-align:center;font-size:14px;padding:8px 16px}
+    .demo-note a{color:#f2b27e}
+    .promo-bar{background:#c8541c;color:#fff;text-align:center;padding:10px 16px;font-size:15px}
+    .top{display:flex;align-items:center;gap:24px;max-width:1120px;margin:0 auto;padding:18px 20px}
+    .logo{font-weight:600;font-size:22px;color:#1f1a17;text-decoration:none}
+    .top nav{display:flex;gap:20px;margin-left:auto}
+    .top nav a{color:#5d534c;text-decoration:none}
+    .button{display:inline-block;background:#1f1a17;color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600}
+    .hero{position:relative;max-width:1120px;margin:0 auto;padding:0 20px}
+    .hero-img{width:100%;border-radius:20px}
+    .hero-text{max-width:560px;padding:32px 0 8px}
+    .hero-text h1{font-size:44px;line-height:1.1;margin:0 0 16px}
+    .hero-text p{font-size:18px;color:#5d534c;margin:0 0 24px}
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:1120px;margin:48px auto;padding:0 20px}
+    .feature{background:#fff;border:1px solid #ece4da;border-radius:16px;overflow:hidden}
+    .feature-img{width:100%}
+    .feature-body{padding:20px}
+    .feature-body h3{margin:0 0 8px;font-size:20px}
+    .feature-body p{margin:0;color:#5d534c}
+    .icon{width:24px;height:24px;color:#c8541c;margin-bottom:10px}
+    .cta{max-width:1120px;margin:0 auto 48px;padding:40px 20px;text-align:center;background:#f1e7dc;border-radius:20px}
+    .cta h2{margin:0 0 12px;font-size:30px}
+    .cta p{color:#5d534c;margin:0 0 20px}
+    footer{text-align:center;color:#5d534c;font-size:14px;padding:24px 20px 40px}
+    @media (max-width:700px){.top nav{display:none}.top .button{margin-left:auto}.hero-text h1{font-size:34px}}
+  </style>
+</head>
+<body>
+  <div class="promo-bar">Free delivery in Oslo on orders over 400 kr</div>
+  <div class="demo-note">
+    Demo, "after" version: the same page, optimized.
+    <a href="../">Back to the case study</a>
+  </div>
+
+  <header class="top">
+    <a class="logo" href="#">Høstlys</a>
+    <nav>
+      <a href="#coffee">Coffee</a>
+      <a href="#roastery">Roastery</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="button" href="#visit">Shop beans</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <picture>
+        <source type="image/avif" srcset="img/hero-800.avif 800w, img/hero-1200.avif 1200w, img/hero-1600.avif 1600w" sizes="(max-width: 1120px) calc(100vw - 40px), 1080px">
+        <source type="image/webp" srcset="img/hero-800.webp 800w, img/hero-1200.webp 1200w, img/hero-1600.webp 1600w" sizes="(max-width: 1120px) calc(100vw - 40px), 1080px">
+        <img class="hero-img" src="img/hero-1200.webp" width="1600" height="960" alt="Hills at sunset" fetchpriority="high" decoding="async">
+      </picture>
+      <div class="hero-text">
+        <h1>Small-batch coffee, roasted in Oslo.</h1>
+        <p>We roast twice a week and ship the same day, so the beans you get are never older than a few days.</p>
+        <a class="button" href="#coffee">See this week's coffee</a>
+      </div>
+    </section>
+
+    <section class="features" id="coffee">
+      <article class="feature">
+        <picture>
+          <source type="image/avif" srcset="img/roastery-400.avif 400w, img/roastery-800.avif 800w" sizes="(max-width: 700px) calc(100vw - 40px), 347px">
+          <source type="image/webp" srcset="img/roastery-400.webp 400w, img/roastery-800.webp 800w" sizes="(max-width: 700px) calc(100vw - 40px), 347px">
+          <img class="feature-img" src="img/roastery-800.webp" width="800" height="533" alt="The roastery" loading="lazy" decoding="async">
+        </picture>
+        <div class="feature-body">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5Z"/><path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 2v3M12 2v3"/></svg>
+          <h3>Roasted fresh</h3>
+          <p>Every batch is roasted to order and packed within hours.</p>
+        </div>
+      </article>
+      <article class="feature" id="roastery">
+        <picture>
+          <source type="image/avif" srcset="img/beans-400.avif 400w, img/beans-800.avif 800w" sizes="(max-width: 700px) calc(100vw - 40px), 347px">
+          <source type="image/webp" srcset="img/beans-400.webp 400w, img/beans-800.webp 800w" sizes="(max-width: 700px) calc(100vw - 40px), 347px">
+          <img class="feature-img" src="img/beans-800.webp" width="800" height="533" alt="Coffee beans" loading="lazy" decoding="async">
+        </picture>
+        <div class="feature-body">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 6-14 14-14 0 8-6 14-14 14Z"/><path d="M5 19l8-8"/></svg>
+          <h3>Traceable beans</h3>
+          <p>We buy directly from farms we know and pay well above market price.</p>
+        </div>
+      </article>
+      <article class="feature">
+        <picture>
+          <source type="image/avif" srcset="img/cafe-400.avif 400w, img/cafe-800.avif 800w" sizes="(max-width: 700px) calc(100vw - 40px), 347px">
+          <source type="image/webp" srcset="img/cafe-400.webp 400w, img/cafe-800.webp 800w" sizes="(max-width: 700px) calc(100vw - 40px), 347px">
+          <img class="feature-img" src="img/cafe-800.webp" width="800" height="533" alt="The café" loading="lazy" decoding="async">
+        </picture>
+        <div class="feature-body">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5Z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>
+          <h3>Free delivery in Oslo</h3>
+          <p>Orders over 400 kr are delivered by bike within one working day.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="cta" id="visit">
+      <h2>Visit the roastery</h2>
+      <p>Open Tuesday to Saturday. Come for a tasting, stay for a cup.</p>
+      <a class="button" href="#">Plan your visit</a>
+    </section>
+  </main>
+
+  <footer>Høstlys Coffee Roasters is a fictional business. Demo by Ivan.</footer>
+</body>
+</html>
