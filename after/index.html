@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Høstlys Coffee Roasters</title>
   <meta name="description" content="Small-batch coffee roasted in Oslo twice a week and shipped the same day. Demo project with a fictional business.">
-  <meta name="robots" content="noindex, follow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- One family, two weights, font-display: swap, loaded without blocking the first paint. -->
@@ -20,7 +19,8 @@
     img{display:block;max-width:100%;height:auto}
     .demo-note{background:#1f1a17;color:#fbf8f4;text-align:center;font-size:14px;padding:8px 16px}
     .demo-note a{color:#f2b27e}
-    .promo-bar{background:#c8541c;color:#fff;text-align:center;padding:10px 16px;font-size:15px}
+    .promo-bar{background:#b04716;color:#fff;text-align:center;padding:10px 16px;font-size:15px}
+    .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
     .top{display:flex;align-items:center;gap:24px;max-width:1120px;margin:0 auto;padding:18px 20px}
     .logo{font-weight:600;font-size:22px;color:#1f1a17;text-decoration:none}
     .top nav{display:flex;gap:20px;margin-left:auto}
@@ -77,6 +77,7 @@
     </section>
 
     <section class="features" id="coffee">
+      <h2 class="visually-hidden">Why Høstlys</h2>
       <article class="feature">
         <picture>
           <source type="image/avif" srcset="img/roastery-400.avif 400w, img/roastery-800.avif 800w" sizes="(max-width: 700px) calc(100vw - 40px), 347px">
